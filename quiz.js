@@ -24,7 +24,7 @@ const quiz = [
         "Какого цвете хвост у зебры?",
         ["Белый", "Черный", "Серый", "Коричневый"],
         ["Белый", "Черный"],
-        "https://upload.wikimedia.org/wikipedia/commons/2/25/Friendly_Female_Koala.JPG"
+        "https://upload.wikimedia.org/wikipedia/commons/3/3d/Equus_grevyi_in_moscow_zoo.jpg"
     ),
     new Question(
         "Какое животное самое быстрое?",
