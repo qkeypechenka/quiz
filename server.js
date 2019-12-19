@@ -23,10 +23,10 @@ app.post('/quiz', (req, res) => {
             }
         }
     }
-    res.send(numberOfCorrect);
+    res.send(numberOfCorrect.toString());
 });
 
-app.listen(port, () => console.log(`Started on port ${port}`));
+app.listen(port, () => console.log(`Started on port ${port} [http://localhost:${port}]`));
 
 function createQuestionDTOLookup(questions) {
     const questionsDTOs = new Map();

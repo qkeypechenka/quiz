@@ -13,6 +13,24 @@ const quiz = [
         ["Амурский", "Малазийский", "Индийский", "Суматранский"],
         ["Амурский"],
         "https://upload.wikimedia.org/wikipedia/commons/1/17/Berlin_Tierpark_Friedrichsfelde_12-2015_img23_Siberian_tiger.jpg"
+    ),
+    new Question(
+        "Где живет коала?",
+        ["В горной пещере", "В бамбуковом лесу", "В тропических лесах Новой Зеландии", "На эвкалиптовом дереве"],
+        ["На эвкалиптовом дереве"],
+        "https://upload.wikimedia.org/wikipedia/commons/2/25/Friendly_Female_Koala.JPG"
+    ),
+    new Question(
+        "Какого цвете хвост у зебры?",
+        ["Белый", "Черный", "Серый", "Коричневый"],
+        ["Белый", "Черный"],
+        "https://upload.wikimedia.org/wikipedia/commons/2/25/Friendly_Female_Koala.JPG"
+    ),
+    new Question(
+        "Какое животное самое быстрое?",
+        ["Лев", "Зебра", "Сапсан", "Гепард"],
+        ["Сапсан"],
+        "https://upload.wikimedia.org/wikipedia/commons/1/11/Cheetah_Kruger.jpg"
     )
 ];
 
