@@ -3,27 +3,30 @@ const API = {
 };
 
 async function run() {
-    const data = await sendRequest(`localhost:3000${API.quiz}`)
+    const data = await sendRequest(`http://localhost:3000${API.quiz}`)
     render(data);
 }
 
 run();
 
-async function sendRequest (url) {
-    return fetch(url)
-        .then((response) => {
-            if (response.ok)
-                return response.json();
-            else
-                throw Error(`${response.status} ${response.statusText}`);
-        });
+async function sendRequest (url, data={}, method="GET") {
+    let response = await fetch(url);
+    return await response.json();
+}
+
+async function sendPost (url, data) {
+    let response = await fetch(url, {
+        method: 'POST',
+        body: data
+    });
+    return await response.json();
 }
 
 function render (data) {
-    let container = document.getElementsByClassName('cardsView');
-    for (const card of data) {
+    let container = document.getElementsByClassName('cardsView')[0];
+    for (let card of data) {
         const cardView = createCard();
-        const image = createImage(card.url);
+        const image = createImage(card.image);
         const body = createCardBody(card);
         cardView.appendChild(image);
         cardView.appendChild(body);
@@ -52,7 +55,7 @@ function createCardBody(data) {
     const form = document.createElement('form');
     body.appendChild(titleView);
     for (const option of data.options) {
-        createOption(form, option, id);
+        createOption(form, option, data.id);
     }
     body.appendChild(form);
     return body;
@@ -68,11 +71,28 @@ function createCardTitle(title) {
 function createOption(form, title, name) {
     const input = document.createElement('input');
     input.type = 'radio';
-    input.name = 'name';
+    input.name = name;
+    input.value = title;
     form.appendChild(input);
     const label = document.createElement('label');
-    label.textContent = 'title';
+    label.textContent = title;
     form.appendChild(label);
     const br = document.createElement('br');
     form.appendChild(br);
+}
+
+function sendAnswers() {
+    let profile = [];
+    document.querySelectorAll("form").forEach(f => {
+        let obj = {};
+        f.querySelectorAll("input").forEach(ele => {
+            if (ele.checked) {
+                obj.id = ele.name;
+                obj.answer = ele.value;
+            }
+        });
+        profile.push(obj);
+    });
+    sendPost(`http://localhost:300${quiz}`, profile)
+        .then(data => alert(data));
 }
